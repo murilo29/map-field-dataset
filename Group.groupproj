@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{130A8D98-CE5D-4BB9-ADB9-C702C5F1B37E}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DBDateTime\DBDateTime.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MapDataSetField\MapDataSetField.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Demo\Demo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DBDateTime">
+        <MSBuild Projects="DBDateTime\DBDateTime.dproj"/>
+    </Target>
+    <Target Name="DBDateTime:Clean">
+        <MSBuild Projects="DBDateTime\DBDateTime.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DBDateTime:Make">
+        <MSBuild Projects="DBDateTime\DBDateTime.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MapDataSetField">
+        <MSBuild Projects="MapDataSetField\MapDataSetField.dproj"/>
+    </Target>
+    <Target Name="MapDataSetField:Clean">
+        <MSBuild Projects="MapDataSetField\MapDataSetField.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MapDataSetField:Make">
+        <MSBuild Projects="MapDataSetField\MapDataSetField.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Demo">
+        <MSBuild Projects="Demo\Demo.dproj"/>
+    </Target>
+    <Target Name="Demo:Clean">
+        <MSBuild Projects="Demo\Demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Demo:Make">
+        <MSBuild Projects="Demo\Demo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DBDateTime;MapDataSetField;Demo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DBDateTime:Clean;MapDataSetField:Clean;Demo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DBDateTime:Make;MapDataSetField:Make;Demo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
